@@ -1,0 +1,24 @@
+{
+  "name": "louistung",
+  "version": "1.0.0",
+  "description": "test server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louis79719/FileMetadataMicroservice.git"
+  },
+  "author": "louistung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/louis79719/FileMetadataMicroservice/issues"
+  },
+  "homepage": "https://github.com/louis79719/FileMetadataMicroservice#readme",
+  "dependencies": {
+    "express": "^4.15.5",
+    "multer": "^1.3.0",
+    "router": "^1.3.2"
+  }
+}
