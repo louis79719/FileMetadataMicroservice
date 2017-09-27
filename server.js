@@ -3,21 +3,29 @@
 
 var express = require('express');
 var app = express();
+var upload = require('multer');
+var fs = require('fs');
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+const uploader = upload({dest: 'uploads/'});
 
-// http://expressjs.com/en/starter/static-files.html
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.post("/get-file-size", function(request, response, next){
-  console.dir( request.route.stack )
-  response.end( "ok" )
+app.post("/get-file-size", uploader.single('fileUploaded'), function(request, response, next){
+  console.dir( request.file )
+  const file = request.file
+  var returnObj = {}
+  returnObj.size = file.size
+  fs.unlink(file.path,function(err){
+    if( err ){
+      console.error(err)
+    }
+  })
+  response.end( JSON.stringify(returnObj) )
 })
 
 // listen for requests :)
